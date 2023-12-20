@@ -4,23 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page title</title>
-    <!-- <link rel="stylesheet" href="./sass/index.scss" /> -->
     <link rel="stylesheet" href="./css/common.css" />
     <script type="module" src="./index.js"></script>
   </head>
   <body>
-    
-    <form class="search-form" id="search-form">
+    <div class="search-form-container">
+ <form class="search-form" id="search-form">
       <input
+      class="search-form-input"
         type="text"
         name="searchQuery"
         autocomplete="off"
         placeholder="Search images..."
       />
-      <button type="submit">Search</button>
-      <div class="gallery"></div>
-      <button type="button" class="load-more">Load more</button>
+      <button class="btn-submit" type="submit"><i class="fas fa-search"></button>
+    </div>
+      
+         
     </form>
-    <!-- <include src="./partials/example.html"></include> -->
+<div class="gallery"></div>
+
+ <div class="btn-load-container">
+        <button type="button" class="load-more">Load more</button>
+      </div>
+
   </body>
 </html>
