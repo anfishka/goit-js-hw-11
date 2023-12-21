@@ -1,3 +1,5 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import '@fortawesome/fontawesome-free/css/all.css';
@@ -50,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             card.classList.add('photo-card');
             card.innerHTML = `   
                 <a href="${image.largeImageURL}" class="lightbox">
-                <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy" />
+                <img class="gallery-image" src="${image.webformatURL}" alt="${image.tags}" loading="lazy" />
                 <div class="info">
                   <p class="info-item">
                   
@@ -132,7 +134,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           card.classList.add('photo-card');
           card.innerHTML = `   
           <a href="${image.largeImageURL}" class="lightbox">
-          <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy" />
+          <img class="gallery-image" src="${image.webformatURL}" alt="${image.tags}" loading="lazy" />
           <div class="info">
             <p class="info-item">
             
@@ -168,6 +170,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
       console.error(error);
       Notiflix.Notify.failure('An error occurred while fetching more images. Please try again.');
+    }
+  });
+
+const lightbox = new SimpleLightbox('.gallery-image', {
+    captionsData: 'alt',
+    captionDelay: 250,
+    elements: '.gallery-image',
+    close: true,
+  });
+
+  gallery.addEventListener('click', event => {
+    if (event.target.classList.contains('gallery-image')) {
+      event.preventDefault();
+      lightbox.open();
     }
   });
 });
